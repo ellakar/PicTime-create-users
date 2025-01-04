@@ -1,0 +1,8 @@
+{
+    "users":[
+        {"name": "Daniel", "age":22,"id":1, "password":"123"},
+        {"name": "Noa", "age":23,"id":2, "password":"123"},
+        {"name": "Asaf", "age":22,"id":3, "password":"123"},
+        {"name": "Dafna", "age":22,"id":4, "password":"123"}
+    ]
+}
