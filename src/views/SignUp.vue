@@ -1,20 +1,17 @@
 <template>
-  
-  <div class="backdrop" @click.self="closeSignup">
-    <div class="SignUp">
-    <h1>This is a Sign Up page</h1>
-
-    <lable> Enter Name</lable>
-    <input type="text" v-model="name">
-
-    <lable> Enter Password</lable>
-    <input type="Password" v-model="pas1">
-
-    <lable> Enter Password Again</lable>
-    <input type="Password" v-model="pas2">
-     </div>
-   </div>
-   <button @click ="validateuser"> Create</button>
+  <div class="signup">
+    <div class="form-container">
+      <h1>Sign Up</h1>
+      <label>Enter Name</label>
+      <input type="text" v-model="name" class="input-field">
+      <label>Enter Password</label>
+      <input type="password" v-model="pas1" class="input-field">
+      <label>Enter Password Again</label>
+      <input type="password" v-model="pas2" class="input-field">
+      <button @click="validateuser" class="primary-button">Create</button>
+      <p class="message">{{ msg }}</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -23,45 +20,93 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      
-
       name: '',
       pas1: '',
       pas2: '',
       msg: '',
-      isValid: false
-    }
+      isValid: false,
+    };
   },
   methods: {
     validateuser() {
       if (this.pas1 !== this.pas2) {
-        this.msg = "Passwords do not match";
+        this.msg = 'Passwords do not match';
         return;
       }
       if (this.pas1.length < 3) {
-        this.msg = "Password must have more than 3 characters";
+        this.msg = 'Password must have more than 3 characters';
         return;
-     
-     }
-
-     else
-      this.sendUserData();
+      } else this.sendUserData();
     },
     async sendUserData() {
       try {
         const response = await axios.post('http://localhost:3000/users', {
           name: this.name,
-          password: this.pas1
+          password: this.pas1,
         });
         this.isValid = true;
-        this.msg = "New user created";
+        this.msg = 'New user created';
       } catch (error) {
-        this.msg = "Error creating user: " + error.message;
+        this.msg = 'Error creating user: ' + error.message;
       }
     },
-    closeSignup() {
-      this.$emit('close');
-    }
-  }
-}
+  },
+};
 </script>
+
+<style scoped>
+.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e3f2fd;
+}
+
+.form-container {
+  background: white;
+  padding: 150px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.label {
+  display: block;
+  margin: 10px 0 5px;
+  text-align: left;
+}
+
+.input-field {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.primary-button {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.primary-button:hover {
+  background-color: #1565c0;
+}
+
+.message {
+  margin-top: 15px;
+  color: red;
+}
+</style>

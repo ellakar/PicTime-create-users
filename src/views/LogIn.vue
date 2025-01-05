@@ -1,162 +1,115 @@
 <template>
-
   <div class="home">
-    <form  @submit.prevent class="form-container">
-
-      <div v-if="showSignup">
-        <SignUp @close="createNewUser"> </signUp>
-     
-      </div>
-
-      <h1> Welcome</h1>
-    <label> Enter User name</label>
-    <input type= "text" v-model="userName"  class ="input-field" >
-    <label> Enter Password</label>
-    <input type= "password" v-model="password"  class ="input-field">
-    <button @click="handleSubmit" class="primary-button" > Submit</button>
-
-    <div class="secondary-button">
-      <button @click ="CreateNewUser" id="creatUser"> Creat new user</button>  
-    </div>
-  
+    <form @submit.prevent class="form-container">
+      <img src="@/assets/pic-time.png"  />
+      <h1>Welcome</h1>
+      <label>Enter User Name</label>
+      <input type="text" v-model="userName" placeholder="User Name" class="input-field">
+      <label>Enter Password</label>
+      <input type="password" v-model="password" placeholder="Password" class="input-field">
+      <button @click="handleSubmit" class="primary-button">Submit</button>
+      <p class="message">{{ msg }}</p>
     </form>
-
+    <p>{{ userName }} {{ password }}</p>
   </div>
-
-  <p> {{ userName }} {{ password }}</p>
 </template>
-
 
 <script>
 import SignUp from './SignUp.vue';
 
 export default {
   name: 'LogIn',
-  components:{SignUp},
-
-  data(){
-    return{
-      showSignup:false,
-      userName:'',
-      password:'',
-      users:[],
-      userExsist:false
-     
-    }
+  components: { SignUp },
+  data() {
+    return {
+      showSignup: false,
+      userName: '',
+      password: '',
+      users: [],
+      msg: '',
+      userExist: false,
+    };
   },
-  methods:{
-    
-    handleSubmit(){
+  methods: {
+    handleSubmit() {
       fetch('http://localhost:3000/users')
-      .then(res => res.json())
-      .then(data => this.users=data) 
-      .catch(err => console.log(err.message))
-        console.log(this.users)
-        
-        for (let i=0;i<this.users.length;i++){
-          if(this.userName===this.users[i].name){
-            if(this.password===this.users[i].password){
-              console.log('login succesful') 
-              this.userExsist=true                 
-            }   
-            else
-             console.log('wrong password')
-           }  
-        }
-       if(!this.userExsist) 
-          console.log('there is no user in that name')
-  
+        .then((res) => res.json())
+        .then((data) => (this.users = data))
+        .catch((err) => console.log(err.message));
+      for (let i = 0; i < this.users.length; i++) {
+        if (this.userName === this.users[i].name) {
+          if (this.password === this.users[i].password) {
+            this.msg = 'Login successful';
+            this.userExist = true;
+          } else {
+            this.msg = 'Wrong password';
+            this.userExist = true;
+          }
+        } if (!this.userExist) this.msg = 'There is no user with that name';
+      }
+     
     },
-    
-    CreateNewUser(){
-    this.showSignup=!this.showSignup
-    console.log(this.showSignup)
-  
+    CreateNewUser() {
+      this.showSignup = !this.showSignup;
     },
-
-    function(){
-console.log('hello')
-    }
-
   },
-
- 
-}
-
+};
 </script>
 
-<style>
-#home {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1 {
-  font-size: 2.5rem;
-  color: #34495e;
-  margin-bottom: 30px;
+<style scoped>
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f4f8;
 }
 
 .form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px; /* Space between input fields and button */
+  background: white;
+  padding: 150px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.label {
+  display: block;
+  margin: 10px 0 5px;
+  text-align: left;
 }
 
 .input-field {
   width: 80%;
-  max-width: 400px;
   padding: 10px;
-  font-size: 16px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-  transition: border-color 0.3s;
+  border-radius: 4px;
 }
 
-.input-field:focus {
-  border-color: #3498db; /* Blue border on focus */
-}
-primary-button {
-  width: 80%;
-  max-width: 400px;
-  padding: 10px;
-  background-color: #3498db;
+.primary-button {
+  background-color: #4caf50;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  width: 100%;
 }
 
 .primary-button:hover {
-  background-color: #2980b9; /* Darker blue on hover */
+  background-color: #45a049;
 }
 
-.create-user {
-  margin-top: 20px;
+.message {
+  margin-top: 15px;
+  color: red;
 }
-
-.secondary-button {
-  padding: 10px 20px;
-  background-color: #2ecc71; /* Green background */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.secondary-button:hover {
-  background-color: #27ae60; /* Darker green on hover */
-}
-
-
 </style>
