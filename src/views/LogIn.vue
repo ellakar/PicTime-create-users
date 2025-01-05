@@ -8,7 +8,7 @@
      
       </div>
 
-      <h1> Welcom</h1>
+      <h1> Welcome</h1>
     <label> Enter User name</label>
     <input type= "text" v-model="userName"  class ="input-field" >
     <label> Enter Password</label>
