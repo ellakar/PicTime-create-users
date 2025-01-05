@@ -34,9 +34,9 @@ export default {
     handleSubmit() {
       fetch('http://localhost:3000/users')
         .then((res) => res.json())
-        .then((data) => (this.users = data))
-        .catch((err) => console.log(err.message));
-      for (let i = 0; i < this.users.length; i++) {
+        .then((data) => 
+        {(this.users = data);
+  for (let i = 0; i < this.users.length; i++) {
         if (this.userName === this.users[i].name) {
           if (this.password === this.users[i].password) {
             this.msg = 'Login successful';
@@ -46,8 +46,9 @@ export default {
             this.userExist = true;
           }
         } if (!this.userExist) this.msg = 'There is no user with that name';
-      }
-     
+      
+      }})
+        .catch((err) => console.log(err.message))
     },
     CreateNewUser() {
       this.showSignup = !this.showSignup;
