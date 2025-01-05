@@ -10,7 +10,7 @@
       <button @click="handleSubmit" class="primary-button">Submit</button>
       <p class="message">{{ msg }}</p>
     </form>
-    <p>{{ userName }} {{ password }}</p>
+    <!-- <p>{{ userName }} {{ password }}</p> -->
   </div>
 </template>
 
