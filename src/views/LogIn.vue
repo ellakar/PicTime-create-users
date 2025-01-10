@@ -5,7 +5,7 @@
       <h1>Welcome</h1>
       <label>Enter User Name</label>
       <input type="text" v-model="userName" placeholder="User Name" class="input-field">
-      <label>Enter Password</label>
+      <label>Enter Pin Code</label>
       <input type="password" v-model="password" placeholder="Password" class="input-field">
       <button @click="handleSubmit" class="primary-button">Submit</button>
       <p class="message">{{ msg }}</p>
@@ -70,7 +70,7 @@ export default {
   background: white;
   padding: 150px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 300px;
 
@@ -102,7 +102,7 @@ h1 {
   padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer;
-  width: 100%;
+  width: 90%;
 }
 
 .primary-button:hover {

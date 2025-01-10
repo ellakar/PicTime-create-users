@@ -4,9 +4,9 @@
       <h1>Sign Up</h1>
       <label>Enter Name</label>
       <input type="text" v-model="name" class="input-field">
-      <label>Enter Password</label>
+      <label>Enter Pin Code</label>
       <input type="password" v-model="pas1" class="input-field">
-      <label>Enter Password Again</label>
+      <label>Enter Pin Code Again</label>
       <input type="password" v-model="pas2" class="input-field">
       <button @click="validateuser" class="primary-button">Create</button>
       <p class="message">{{ msg }}</p>
@@ -98,7 +98,7 @@ h1 {
   padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer;
-  width: 100%;
+  width: 90%;
 }
 
 .primary-button:hover {
