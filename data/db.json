@@ -4,50 +4,114 @@
       "name": "Daniel",
       "age": 22,
       "id": "1",
-      "password": "123"
+      "password": "123",
+      "numberOfPhotos": 0
+    },
+    {
+      "name": "Ella",
+      "age": 22,
+      "id": "5",
+      "password": "123",
+      "numberOfPhotos": 0
     },
     {
       "name": "Noa",
       "age": 23,
       "id": "2",
-      "password": "123"
+      "password": "123",
+      "numberOfPhotos": 4
     },
     {
       "name": "Asaf",
       "age": 22,
       "id": "3",
-      "password": "123"
+      "password": "123",
+      "numberOfPhotos": 0
     },
     {
       "name": "Dafna",
       "age": 22,
       "id": "4",
-      "password": "123"
+      "password": "123",
+      "numberOfPhotos": 0
     },
     {
-      "id": "f387",
-      "name": "ella",
-      "password": "123"
+      "name": "Avichai",
+      "age": 22,
+      "id": "6",
+      "password": "123",
+      "numberOfPhotos": 0
+    }
+  ],
+  "photoInfo": [
+    {
+      "url": "/src/assets/1.jpg",
+      "searchPhrase": "sky ",
+      "newDescription": "llllllllllll",
+      "ischeacked": "true",
+      "id": "1",
+      "isOk": "true"
     },
     {
-      "id": "141f",
-      "name": "yoyo",
-      "password": "234"
+      "url": "/src/assets/2.jpg",
+      "searchPhrase": "nimni ",
+      "ischeacked": "true",
+      "id": "2",
+      "isOk": "true",
+      "newDescription": "sdfsdf"
     },
     {
-      "id": "d6ea",
-      "name": "popo",
-      "password": "321"
+      "url": "/src/assets/3.jpg",
+      "searchPhrase": "sky ",
+      "isOK": " false",
+      "ischeacked": "true",
+      "id": "3",
+      "isOk": "true",
+      "newDescription": "dgdfgdfg"
     },
     {
-      "id": "dbde",
-      "name": "yaniv",
-      "password": "456"
+      "url": "/src/assets/4.jpg",
+      "searchPhrase": "sky ",
+      "ischeacked": "true",
+      "id": "4",
+      "isOk": "true"
     },
     {
-      "id": "fab5",
-      "name": "avichai",
-      "password": "ella2212"
+      "url": "/src/assets/5.jpg",
+      "searchPhrase": "sky ",
+      "ischeacked": "true",
+      "id": "5",
+      "isOk": "true"
+    },
+    {
+      "url": "/src/assets/6.jpg",
+      "searchPhrase": "sky ",
+      "ischeacked": "true",
+      "id": "6",
+      "isOk": "true",
+      "newDescription": "fffffffffffffff"
+    },
+    {
+      "url": "/src/assets/7.jpg",
+      "searchPhrase": "sky ",
+      "ischeacked": "true",
+      "id": "7",
+      "isOk": "true"
+    },
+    {
+      "url": "/src/assets/8.jpg",
+      "searchPhrase": "sky ",
+      "ischeacked": "true",
+      "id": "8",
+      "isOk": "true"
+    },
+    {
+      "url": "/src/assets/9.jpg",
+      "searchPhrase": "sky ",
+      "ischeacked": "true",
+      "id": "9",
+      "isOk": "true",
+      "newDescription": "kkkkkkkkkkkkkk"
     }
   ]
 }

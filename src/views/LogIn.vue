@@ -1,12 +1,16 @@
 <template>
   <div class="home">
     <form @submit.prevent class="form-container">
+      <router-link to="/signup">Create New User</router-link>
+      <br>
+      <router-link to="/clientPage">Client Page</router-link>
       <img src="@/assets/pic-time.png"  />
       <h1>Welcome</h1>
       <label>Enter User Name</label>
       <input type="text" v-model="userName" placeholder="User Name" class="input-field">
+      <br>
       <label>Enter Pin Code</label>
-      <input type="password" v-model="password" placeholder="Password" class="input-field">
+      <input type="password" v-model="password" placeholder="Pin Code" class="input-field">
       <button @click="handleSubmit" class="primary-button">Submit</button>
       <p class="message">{{ msg }}</p>
     </form>
@@ -15,6 +19,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import SignUp from './SignUp.vue';
 
 export default {
@@ -31,28 +36,43 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {
-      fetch('http://localhost:3000/users')
-        .then((res) => res.json())
-        .then((data) => 
-        {(this.users = data);
-  for (let i = 0; i < this.users.length; i++) {
-        if (this.userName === this.users[i].name) {
-          if (this.password === this.users[i].password) {
-            this.msg = 'Login successful';
-            this.userExist = true;
-          } else {
-            this.msg = 'Wrong password';
-            this.userExist = true;
-          }
-        } if (!this.userExist) this.msg = 'There is no user with that name';
-      
-      }})
-        .catch((err) => console.log(err.message))
-    },
-    CreateNewUser() {
-      this.showSignup = !this.showSignup;
-    },
+
+   async handleSubmit() {   
+    const currentUser =this.userName
+    const currentPssword=this.password
+    
+    
+    try{
+      const response= await axios.post('http://localhost:3000/users',{
+        currentUser,
+        currentPssword
+         })
+         //console.log(response.data)
+         .then((response)=>{            
+         if (response.data==="login success"){
+           this.$router.push('/clientPage');
+           this.msg = response.data;
+         }
+         else{
+          console.log(response.data)     
+          this.msg = response.data;    
+         }
+          })
+
+       } catch (error) {
+      console.error('Error calling backend function:', error);
+    } 
+  },
+  // async countpictures(){
+  //       try{
+  //         await axios.patch('http://localhost:3000/countPictures',{
+            
+  //         })
+
+  //       }
+  //     }
+        
+
   },
 };
 </script>

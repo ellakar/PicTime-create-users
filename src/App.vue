@@ -5,6 +5,7 @@
   <nav>
     <router-link to="/">Login</router-link> |
     <router-link to="/SignUp">Sign Up</router-link>
+    <!-- <router-link to="/clientPage">clientPage</router-link> -->
   </nav>
   <router-view/>
 </template>
