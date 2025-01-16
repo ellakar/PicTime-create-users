@@ -1,9 +1,9 @@
 <template>
   <div class="home">
     <form @submit.prevent class="form-container">
-      <router-link to="/signup">Create New User</router-link>
+      <!-- <router-link to="/signup">Create New User</router-link>
       <br>
-      <router-link to="/clientPage">Client Page</router-link>
+      <router-link to="/clientPage">Client Page</router-link> -->
       <img src="@/assets/pic-time.png"  />
       <h1>Welcome</h1>
       <label>Enter User Name</label>
@@ -127,6 +127,11 @@ h1 {
 
 .primary-button:hover {
   background-color: #45a049;
+}
+@media screen and (max-width: 600px) {
+  .description-container input {
+    width: 90%;
+  }
 }
 
 .message {
