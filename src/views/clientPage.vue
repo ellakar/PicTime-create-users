@@ -2,7 +2,7 @@
     <div class ="clientPage">
       
       <input v-model="description" type="text" placeholder="Enter Description" />
-      <button @click="updateDescription() ; next()">Submit</button>
+      <button @click="updateDescription() ;">Submit</button>
       <button @click="correctDescription(); next()">Correct</button>
       <img :src= "photopath" width="400"/>
       <button @click="next()">Next</button>
@@ -33,9 +33,28 @@ import { onMounted } from 'vue';
     },
 
     methods: {
-
+      async next() {
+        try
+        {
+          const response=await axios.post('http://localhost:3000/next')
+          if (response.data === 'next') {
+               console.log('Next photo'); 
+            }
+          }
+          catch (error) {
+            console.error('Error calling backend function:', error);
+        }
+        window.location.reload();
+      },
       async updateDescription() {
          try{ 
+              // Check the condition before making the request
+               if (!this.description || this.description.trim()==="") {
+               console.log("Enter description");
+               this.message="Enter description"
+               return;
+    }
+      await this.next();
       await  axios.put('http://localhost:3000/update',{
       newDescription: this.description,
       ischeacked:"true"
@@ -59,19 +78,7 @@ import { onMounted } from 'vue';
       }
     },
       
-      async next() {
-        try
-        {
-          const response=await axios.post('http://localhost:3000/next')
-          if (response.data === 'next') {
-               console.log('Next photo'); 
-            }
-          }
-          catch (error) {
-            console.error('Error calling backend function:', error);
-        }
-        window.location.reload();
-      },
+     
 
 
 
