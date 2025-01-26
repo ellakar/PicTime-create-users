@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
+  <div class="LogIn">
     <form @submit.prevent class="form-container">
-      <!-- <router-link to="/signup">Create New User</router-link>
+       <!-- <router-link to="/signup">Create New User</router-link>
       <br>
-      <router-link to="/clientPage">Client Page</router-link> -->
+      <router-link to="/clientPage">Client Page</router-link>  -->
       <img src="@/assets/pic-time.png"  />
       <h1>Welcome</h1>
       <label>Enter User Name</label>
@@ -14,7 +14,7 @@
       <button @click="handleSubmit" class="primary-button">Submit</button>
       <p class="message">{{ msg }}</p>
     </form>
-    <!-- <p>{{ userName }} {{ password }}</p> -->
+ 
   </div>
 </template>
 
@@ -43,7 +43,7 @@ export default {
     
     
     try{
-      const response= await axios.post('http://localhost:3000/users',{
+      const response= await axios.post('http://localhost:3000/logIn',{
         currentUser,
         currentPssword
          })
@@ -63,22 +63,14 @@ export default {
       console.error('Error calling backend function:', error);
     } 
   },
-  // async countpictures(){
-  //       try{
-  //         await axios.patch('http://localhost:3000/countPictures',{
-            
-  //         })
 
-  //       }
-  //     }
-        
 
   },
 };
 </script>
 
 <style scoped>
-.home {
+.LogIn {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -3,12 +3,14 @@
     <div class="form-container">
       <h1>Sign Up</h1>
       <label>Enter Name</label>
-      <input type="text" v-model="name" class="input-field">
+      <input type="text" v-model="userName" class="input-field">
       <label>Enter Pin Code</label>
+      <br>
       <input type="password" v-model="pas1" class="input-field">
       <label>Enter Pin Code Again</label>
+      <br>
       <input type="password" v-model="pas2" class="input-field">
-      <button @click="validateuser" class="primary-button">Create</button>
+      <button @click="validateuser()" class="primary-button">Create</button>
       <p class="message">{{ msg }}</p>
     </div>
   </div>
@@ -20,7 +22,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      name: '',
+      userName: '',
       pas1: '',
       pas2: '',
       msg: '',
@@ -40,12 +42,13 @@ export default {
     },
     async sendUserData() {
       try {
-        const response = await axios.post('http://localhost:3000/users', {
-          name: this.name,
+        const response = await axios.post('http://localhost:3000/signUp', {
+          name: this.userName,
           password: this.pas1,
         });
         this.isValid = true;
         this.msg = 'New user created';
+        this.$router.push('/');
       } catch (error) {
         this.msg = 'Error creating user: ' + error.message;
       }
@@ -65,7 +68,7 @@ export default {
 
 .form-container {
   background: white;
-  padding: 150px;
+  padding: 100px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -100,7 +103,11 @@ h1 {
   cursor: pointer;
   width: 90%;
 }
-
+@media screen and (max-width: 600px) {
+  .description-container input {
+    width: 90%;
+  }
+}
 .primary-button:hover {
   background-color: #1565c0;
 }
