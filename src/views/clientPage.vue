@@ -1,34 +1,52 @@
 <template>
   <div class="clientPage">
-
-    <div > 
-      <h3> The privios description was:</h3>
-      <p id="priviosDescrip"> {{ priviosDescrip }}</p>
+    <div>
+      <h3>The privios description was:</h3>
+      <p id="priviosDescrip">{{ priviosDescrip }}</p>
     </div>
-        
+
     <div class="description-container">
-      <input v-model="description" type="text" placeholder="Enter Description" />
-      <button class="submit-btn" @click="updateDescription();;movePicture()">Submit</button>
+      <input
+        v-model="description"
+        type="text"
+        placeholder="Enter Description"
+      />
+      <button
+        class="submit-btn"
+        @click="
+          updateDescription();
+
+        "
+      >
+        Submit
+      </button>
     </div>
 
     <div class="button-container">
-      <button class="correct-btn" @click="correctDescription(); next();movePicture()">Correct</button>
-      <!-- <button class="next-btn" @click="next()">Next</button> -->
-       <!-- <button @click="movePicture()"> move picture</button> -->
+      <button
+        class="correct-btn"
+        @click="
+          correctDescription();
+          
+        "
+      >
+        Correct
+      </button>
+      
     </div>
 
     <div class="image-container">
       <p id="description">{{ message }}</p>
-      <img :src="serverAddress+'photo'"  height="300" alt="Photo" />
+      <img :src="serverAddress + 'photo'" height="300" alt="Photo" />
     </div>
-
   </div>
 </template>
 
 <script>
 import axios from "axios";
-//import { response } from "express";
+
 import { onMounted } from "vue";
+
 
 export default {
   data() {
@@ -36,38 +54,27 @@ export default {
       photopath: "http://localhost:3000/photo",
       description: "",
       message: "",
-      priviosDescrip:" ",
-      serverAddress: "http://localhost:3000/"
-    
+      priviosDescrip: " ",
+      serverAddress: "http://localhost:3000/",
+      
     };
   },
-  methods: {
-    async fetchPreviousDescription() {  
-try{
-  const res=axios.get(this.serverAddress+'searchPhrase')
-  .then((res)=>{
-      if(document.getElementById('priviosDescrip')!=null){
-   
-document.getElementById('priviosDescrip').innerHTML=res.data;    
-    }
-  })
-}
-catch (error) {
-  console.error('Error calling backend function:', error);
-}
-},
 
-    async next() {
+  methods: {
+    async fetchPreviousDescription() {
       try {
-        const response = await axios.post(this.serverAddress+"next");
-        if (response.data === "next") {
-          console.log("Next photo");
-        }
+        const res = axios
+          .get(this.serverAddress + "searchPhrase")
+          .then((res) => {
+            if (document.getElementById("priviosDescrip") != null) {
+              document.getElementById("priviosDescrip").innerHTML = res.data;
+            }
+          });
       } catch (error) {
         console.error("Error calling backend function:", error);
       }
-      window.location.reload();
     },
+
 
     async updateDescription() {
       try {
@@ -76,56 +83,68 @@ catch (error) {
           this.message = "Enter description";
           return;
         }
-        await this.next();
-        await axios.put("http://localhost:3000/update", {
+
+  const res= await axios.put("http://localhost:3000/update", {
           newDescription: this.description,
           ischeacked: "true",
         });
+        if(res.data=="ok"){
+         this.movePicture();
+       }
+     
       } catch (error) {
         console.error("Error calling backend function:", error);
       }
+
     },
-    
+
     async correctDescription() {
       try {
-        await axios.put("http://localhost:3000/correct", {
+  const res  =await axios.put("http://localhost:3000/correct", {
           isOk: "true",
           ischeacked: "true",
         });
+       if(res.data=="ok"){
+        this.movePicture();
+      }
+
       } catch (error) {
         console.error("Error calling backend function:", error);
       }
-    },
-    async movePicture(){
-      try{
-        await axios.post(this.serverAddress+"Move-picture")
-          console.log('Success')
-          }
-            catch(error){
-             
-              console.error('Error from clientPage ', error);
-            }
       
     },
-    
+    async movePicture() {
+      try {
+        let currentUser = this.$route.query.currentUser
+       const response= await axios.post(this.serverAddress + "Move-picture", {
+          user: currentUser
+        });
+
+        if (response.data == "ok"){
+          console.log("Success");
+          window.location.reload();
+        }
+       
+      } catch (error) {
+        console.error("Error from clientPage ", error);
+      }
+    },
   },
 
   //to print the current serchprase
-   mounted() {
+  mounted() {
     // Fetch the previous description when the page is mounted
     this.fetchPreviousDescription();
+   
   },
 };
-
-
 </script>
 
 <style scoped>
-
-#app{
+#app {
   max-height: 100vh;
 }
- nav{
+nav {
   padding: 0 !important;
 }
 /* General Styles */
@@ -136,7 +155,7 @@ catch (error) {
   padding: 10px; /* Reduced padding */
   font-family: Arial, sans-serif;
   gap: 3px; /* Space between sections */
- 
+
   overflow: hidden; /* Prevent scrolling */
   box-sizing: border-box;
 }
@@ -153,7 +172,7 @@ catch (error) {
 .description-container input {
   padding: 5px; /* Smaller padding */
   font-size: 14px; /* Smaller font size */
-  width: 150px; 
+  width: 150px;
   height: 12px;
   max-width: 90%;
   margin-bottom: 3px;
@@ -178,14 +197,12 @@ catch (error) {
 
 .image-container img {
   /* max-width: min(10rem,90%);  */
-   max-height: 250px; 
+  max-height: 250px;
   border: 2px solid #ddd;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   object-fit: cover;
-  
 }
-
 
 /* Button Container */
 .button-container {
@@ -196,7 +213,7 @@ catch (error) {
 }
 
 .button-container .correct-btn,
-.button-container  .submit-btn {
+.button-container .submit-btn {
   padding: 5px 10px; /* Smaller button size */
   font-size: 12px; /* Smaller font */
   background-color: #81a5e7;
@@ -222,5 +239,4 @@ catch (error) {
     max-height: 120px; /* Scale down the height further */
   }
 }
-
 </style>

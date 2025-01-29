@@ -65,7 +65,7 @@
     {
       "name": "Ella",
       "password": "$2b$10$qJAVvETq1ylDiiqGYfT95uFNMsUm.09tVLKfRKlx2TPWM/UiS1BzC",
-      "numberOfPhotos": 5
+      "numberOfPhotos": 8
     },
     {
       "name": "zxcv",
@@ -74,14 +74,18 @@
     {
       "name": "erer",
       "password": "$2b$10$Ym0bhyhh3lvwMkdnGiTVy.pimQaPWUuvyYuNKIxAesx6tRyfIToWK"
+    },
+    {
+      "name": "avi",
+      "password": "$2b$10$FWEdSVKNdGQOlhg59lTpdOYfTalQ5zNUuKxh962xZVX1O6U6621c2"
     }
   ],
   "photoInfo": [
     {
       "url": "/src/assets/1.jpg",
       "imgName": "1.jpg",
-      "searchPhrase": "w1 ",
-      "newDescription": "llllllllllll",
+      "searchPhrase": "1 ",
+      "newDescription": "jsjhsdj_1",
       "ischeacked": "true",
       "id": "1",
       "isOk": "true"
@@ -89,11 +93,11 @@
     {
       "url": "/src/assets/2.jpg",
       "imgName": "2.jpg",
-      "searchPhrase": "nimni ",
+      "searchPhrase": "2 ",
       "ischeacked": "true",
       "id": "2",
       "isOk": "true",
-      "newDescription": "nimni "
+      "newDescription": "dldkfldfk_2"
     },
     {
       "url": "/src/assets/3.jpg",
@@ -101,8 +105,8 @@
       "searchPhrase": "w3 ",
       "ischeacked": "true",
       "id": "3",
-      "isOk": "true",
-      "newDescription": "w3 "
+      "isOk": "false",
+      "newDescription": "kjsdkjsdkj_3"
     },
     {
       "url": "/src/assets/4.jpg",
@@ -110,53 +114,53 @@
       "searchPhrase": "w4 ",
       "ischeacked": "true",
       "id": "4",
-      "isOk": "true",
-      "newDescription": "w4 "
+      "isOk": "false",
+      "newDescription": "ppppp_3"
     },
     {
       "url": "/src/assets/5.jpg",
       "imgName": "5.jpg",
-      "searchPhrase": "sky ",
+      "searchPhrase": "5 ",
       "ischeacked": "true",
       "id": "5",
       "isOk": "true",
-      "newDescription": "dfg"
+      "newDescription": "sdfdsf"
     },
     {
       "url": "/src/assets/6.jpg",
       "imgName": "6.jpg",
-      "searchPhrase": "sky ",
+      "searchPhrase": "6",
       "ischeacked": "true",
       "id": "6",
       "isOk": "true",
-      "newDescription": "everybody"
+      "newDescription": "6"
     },
     {
       "url": "/src/assets/7.jpg",
       "imgName": "7.jpg",
-      "searchPhrase": "sky ",
+      "searchPhrase": "7",
       "ischeacked": "true",
       "id": "7",
       "isOk": "true",
-      "newDescription": "aloni"
+      "newDescription": "7"
     },
     {
       "url": "/src/assets/8.jpg",
       "imgName": "8.jpg",
-      "searchPhrase": "sky ",
+      "searchPhrase": "8 ",
       "ischeacked": "true",
       "id": "8",
       "isOk": "true",
-      "newDescription": "sky "
+      "newDescription": "8 "
     },
     {
       "url": "/src/assets/9.jpg",
       "imgName": "9.jpg",
-      "searchPhrase": "sky ",
+      "searchPhrase": "9 ",
       "ischeacked": "true",
       "id": "9",
       "isOk": "true",
-      "newDescription": "sky "
+      "newDescription": "9 "
     }
   ]
 }

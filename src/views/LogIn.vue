@@ -50,7 +50,8 @@ export default {
          //console.log(response.data)
          .then((response)=>{            
          if (response.data==="login success"){
-           this.$router.push('/clientPage');
+          this.$router.push({name: 'clientPage', query: {currentUser}});
+           //this.$router.push('/clientPage');
            this.msg = response.data;
          }
          else{
