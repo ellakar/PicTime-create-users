@@ -78,6 +78,10 @@
     {
       "name": "avi",
       "password": "$2b$10$FWEdSVKNdGQOlhg59lTpdOYfTalQ5zNUuKxh962xZVX1O6U6621c2"
+    },
+    {
+      "name": "TOTO",
+      "password": "$2b$10$xWNTCpqpV6XL.KfK1ghSi.JY13HDRhEOUivezJup3/7KekEu.DM82"
     }
   ],
   "photoInfo": [
@@ -97,7 +101,7 @@
       "ischeacked": "true",
       "id": "2",
       "isOk": "true",
-      "newDescription": "dldkfldfk_2"
+      "newDescription": "2 "
     },
     {
       "url": "/src/assets/3.jpg",
@@ -106,7 +110,7 @@
       "ischeacked": "true",
       "id": "3",
       "isOk": "false",
-      "newDescription": "kjsdkjsdkj_3"
+      "newDescription": "3333"
     },
     {
       "url": "/src/assets/4.jpg",
