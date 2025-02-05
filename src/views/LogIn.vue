@@ -45,12 +45,13 @@ export default {
     try{
       const response= await axios.post('http://localhost:3000/logIn',{
         currentUser,
-        currentPssword
+       currentPssword
          })
-         //console.log(response.data)
+         
          .then((response)=>{            
          if (response.data==="login success"){
           this.$router.push({name: 'clientPage', query: {currentUser}});
+          console.log(response.data)
            //this.$router.push('/clientPage');
            this.msg = response.data;
          }

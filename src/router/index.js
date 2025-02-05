@@ -10,7 +10,7 @@ const routes = [
     component: LogIn
   },
   {
-    path: '/clientPage',
+    path: '/clientPag/:user?',
     name: 'clientPage',
     component: clientPage
   },

@@ -19,3 +19,4 @@ npm run build
 See [Configuration Reference](https://cli.vuejs.org/config/).
 "# PicTime-create-users" 
 "# -Image-classification-Pic-Time" 
+"# Pic-Time-app" 
